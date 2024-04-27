@@ -1,0 +1,188 @@
+1                                           The SAS System             20:01 Wednesday, April 24, 2024
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M5) 
+      Licensed to SGH EAS WX6, Site 70110891.
+NOTE: This session is executing on the X64_10PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 14.3
+      SAS/ETS 14.3
+      SAS/OR 14.3
+      SAS/IML 14.3
+      SAS/QC 14.3
+
+NOTE: Additional host information:
+
+ X64_10PRO WIN 10.0.19041  Workstation
+
+NOTE: SAS initialization used:
+      real time           0.43 seconds
+      cpu time            0.29 seconds
+      
+1          /*Log analyzer*/
+2          /* (c) Karol Przanowski */
+3          /* kprzan@sgh.waw.pl */
+4          %let dir_hat=c:\karol\skn_ba\nowe_SAS_Viya\log_analyzer\PROCSS_SIMULATION\codes\;
+5          options mprint details msglevel=i mlogic nosymbolgen FULLSTIMER ;
+6          
+7          %macro run_log_analyzer;
+8          %include "&dir_hat.example1.sas" / source2;
+9          %mend;
+10         %run_log_analyzer;
+MLOGIC(RUN_LOG_ANALYZER):  Beginning execution.
+NOTE: %INCLUDE (level 1) file 
+      c:\karol\skn_ba\nowe_SAS_Viya\log_analyzer\PROCSS_SIMULATION\codes\example1.sas is file 
+      c:\karol\skn_ba\nowe_SAS_Viya\log_analyzer\PROCSS_SIMULATION\codes\example1.sas.
+11        +proc print data=sashelp.class(obs=2);
+MPRINT(RUN_LOG_ANALYZER):   proc print data=sashelp.class(obs=2);
+12        +run;
+MPRINT(RUN_LOG_ANALYZER):   run;
+
+NOTE: There were 2 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.13 seconds
+      user cpu time       0.04 seconds
+      system cpu time     0.01 seconds
+      memory              2974.50k
+      OS Memory           10068.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        1  Switch Count  1
+      
+
+2                                           The SAS System             20:01 Wednesday, April 24, 2024
+
+13        +
+14        +%macro level4;
+15        +proc print data=sashelp.class(obs=2);
+16        +run;
+17        +%mend;
+18        +
+19        +%macro level3;
+20        +proc print data=sashelp.class(obs=2);
+21        +run;
+22        +%mend;
+23        +
+24        +%macro level2;
+25        +proc print data=sashelp.class(obs=2);
+26        +var age;
+27        +var sex;
+28        +var name;
+29        +run;
+30        +
+31        +%level3;
+32        +%level4;
+33        +%mend;
+34        +
+35        +%macro level1;
+36        +proc print data=sashelp.class(obs=2);
+37        +var age;
+38        +var sex;
+39        +var name;
+40        +run;
+41        +
+42        +%level2;
+43        +
+44        +%mend;
+45        +
+46        +%level1;
+MLOGIC(LEVEL1):  Beginning execution.
+MPRINT(LEVEL1):   proc print data=sashelp.class(obs=2);
+MPRINT(LEVEL1):   var age;
+MPRINT(LEVEL1):   var sex;
+MPRINT(LEVEL1):   var name;
+MPRINT(LEVEL1):   run;
+
+NOTE: There were 2 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              347.56k
+      OS Memory           10068.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        2  Switch Count  0
+      
+
+MLOGIC(LEVEL2):  Beginning execution.
+3                                           The SAS System             20:01 Wednesday, April 24, 2024
+
+MPRINT(LEVEL2):   proc print data=sashelp.class(obs=2);
+MPRINT(LEVEL2):   var age;
+MPRINT(LEVEL2):   var sex;
+MPRINT(LEVEL2):   var name;
+MPRINT(LEVEL2):   run;
+
+NOTE: There were 2 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.01 seconds
+      memory              345.46k
+      OS Memory           10068.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        3  Switch Count  0
+      
+
+MLOGIC(LEVEL3):  Beginning execution.
+MPRINT(LEVEL3):   proc print data=sashelp.class(obs=2);
+MPRINT(LEVEL3):   run;
+
+NOTE: There were 2 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 4.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              355.78k
+      OS Memory           10068.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        4  Switch Count  0
+      
+
+MLOGIC(LEVEL3):  Ending execution.
+MPRINT(LEVEL2):  ;
+MLOGIC(LEVEL4):  Beginning execution.
+MPRINT(LEVEL4):   proc print data=sashelp.class(obs=2);
+MPRINT(LEVEL4):   run;
+
+NOTE: There were 2 observations read from the data set SASHELP.CLASS.
+NOTE: The PROCEDURE PRINT printed page 5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.00 seconds
+      user cpu time       0.00 seconds
+      system cpu time     0.00 seconds
+      memory              355.78k
+      OS Memory           10068.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        5  Switch Count  0
+      
+
+MLOGIC(LEVEL4):  Ending execution.
+MPRINT(LEVEL2):  ;
+4                                           The SAS System             20:01 Wednesday, April 24, 2024
+
+MLOGIC(LEVEL2):  Ending execution.
+MPRINT(LEVEL1):  ;
+MLOGIC(LEVEL1):  Ending execution.
+MPRINT(RUN_LOG_ANALYZER):  ;
+NOTE: %INCLUDE (level 1) ending.
+MLOGIC(RUN_LOG_ANALYZER):  Ending execution.
+47         
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           0.73 seconds
+      user cpu time       0.14 seconds
+      system cpu time     0.32 seconds
+      memory              9296.25k
+      OS Memory           10328.00k
+      Timestamp           24.04.2024 08:01:03 PM
+      Step Count                        5  Switch Count  22
+      
